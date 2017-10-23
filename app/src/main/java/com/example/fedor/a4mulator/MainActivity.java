@@ -1,5 +1,6 @@
 package com.example.fedor.a4mulator;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         toolbar.setNavigationIcon(R.drawable.ic_account_circle_black_24dp);
-
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
@@ -99,6 +100,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        Button button_sn_google,button_sn_facebook;
+        button_sn_google = (Button) findViewById(R.id.button_sn_google);
+        button_sn_facebook = (Button) findViewById(R.id.button_sn_facebook);
+        Typeface typeface = Typeface.createFromAsset(this.getAssets(), "Roboto-Thin.ttf");
+        button_sn_google.setTypeface(typeface);
+        button_sn_facebook.setTypeface(typeface);
         return true;
     }
 
