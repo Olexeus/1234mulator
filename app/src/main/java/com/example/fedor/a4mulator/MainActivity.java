@@ -1,6 +1,9 @@
 package com.example.fedor.a4mulator;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
@@ -106,6 +110,17 @@ public class MainActivity extends AppCompatActivity
         Typeface typeface = Typeface.createFromAsset(this.getAssets(), "Roboto-Thin.ttf");
         button_sn_google.setTypeface(typeface);
         button_sn_facebook.setTypeface(typeface);
+
+        final Drawable drawable1 = new ColorDrawable(Color.TRANSPARENT);
+        final Drawable drawable2 = new ColorDrawable(Color.WHITE);
+
+        button_sn_google.setBackgroundDrawable(drawable1);
+       button_sn_google.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+           }
+       });
         return true;
     }
 

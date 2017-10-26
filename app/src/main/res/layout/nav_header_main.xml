@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:textAllCaps="false"
-                android:layout_marginLeft="-8dp"
+                android:layout_marginStart="-8dp"
                 android:text="Connected" />
             <View
                 android:layout_gravity="center"
