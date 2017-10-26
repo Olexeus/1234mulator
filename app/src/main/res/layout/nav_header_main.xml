@@ -47,50 +47,26 @@
            />
         <LinearLayout
             android:layout_width="220dp"
-            android:scaleY="0.8"
-            android:scaleX="0.8"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/sn_border"
             android:gravity="center_horizontal"
             app:layout_constraintLeft_toRightOf="@+id/imageView"
             >
-            <Button
+            <ImageButton
 
-                style="@android:style/Widget.DeviceDefault.Button"
-                android:drawableLeft="@mipmap/google_plus"
-                android:drawablePadding="-8dp"
-                android:background="#00000000"
-                android:textSize="13sp"
+
+                android:background="@drawable/ic_google_connect"
                 android:id="@+id/button_sn_google"
-                android:layout_width="wrap_content"
+                android:layout_width="94dp"
                 android:layout_height="36dp"
-                android:textAllCaps="false"
-                android:layout_marginStart="-8dp"
-                android:text="Connected" />
-            <View
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:layout_width="2dp"
-                android:scaleY="0.999"
-                android:layout_height="match_parent"
-                android:background="#FFF" />
-            <Button
-                style="@android:style/Widget.DeviceDefault.Button"
-                android:drawableLeft="@mipmap/facebook"
-                android:drawablePadding="-8dp"
-                android:textSize="13sp"
-                android:ellipsize="marquee"
+                />
+            <ImageButton
                 android:id="@+id/button_sn_facebook"
-                android:background="#00000000"
-                android:layout_width="wrap_content"
+                android:background="@drawable/ic_facebook_connect"
+                android:layout_width="94dp"
                 android:layout_height="36dp"
-                android:textAllCaps="false"
-                android:text="Connected"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="-10dp"
                />
         </LinearLayout>
 

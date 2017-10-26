@@ -1,9 +1,5 @@
 package com.example.fedor.a4mulator;
 
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -18,10 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    char button_sn_google1 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -99,28 +96,27 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        Button button_sn_google,button_sn_facebook;
-        button_sn_google = (Button) findViewById(R.id.button_sn_google);
-        button_sn_facebook = (Button) findViewById(R.id.button_sn_facebook);
-        Typeface typeface = Typeface.createFromAsset(this.getAssets(), "Roboto-Thin.ttf");
-        button_sn_google.setTypeface(typeface);
-        button_sn_facebook.setTypeface(typeface);
+        final ImageButton button_sn_google, button_sn_facebook;
+        button_sn_google = (ImageButton) findViewById(R.id.button_sn_google);
+        button_sn_facebook = (ImageButton) findViewById(R.id.button_sn_facebook);
 
-        final Drawable drawable1 = new ColorDrawable(Color.TRANSPARENT);
-        final Drawable drawable2 = new ColorDrawable(Color.WHITE);
+        button_sn_google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (button_sn_google1 == 0) {
+                    button_sn_google1 = 1;
+                    button_sn_google.setBackgroundResource(R.drawable.ic_google_connected);
+                } else {
+                    button_sn_google1 = 0;
+                    button_sn_google.setBackgroundResource(R.drawable.ic_google_connect);
+                }
 
-        button_sn_google.setBackgroundDrawable(drawable1);
-       button_sn_google.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-           }
-       });
+            }
+        });
         return true;
     }
 
