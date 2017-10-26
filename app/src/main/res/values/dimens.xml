@@ -8,4 +8,8 @@
     <dimen name="profile_picture">60dp</dimen>
     <dimen name="button_size">30dp</dimen>
     <dimen name="profile_padding">8dp</dimen>
+    <dimen name="theme_butt_width">120dp</dimen>
+    <dimen name="theme_butt_height">70dp</dimen>
+    <dimen name="theme_butt_margin">6dp</dimen>
+    <dimen name="theme_name">12sp</dimen>
 </resources>
