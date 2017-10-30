@@ -1,4 +1,4 @@
-package com.example.fedor.a4mulator;
+package com.example.fedor.a4mulator.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.example.fedor.a4mulator.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity
                         Fragment selectedFragment = null;
                         switch (item.getItemId()) {
                             case R.id.action_item1:
-                                selectedFragment = ItemOneFragment.newInstance();
+                                selectedFragment = FormulasFragment.newInstance();
                                 break;
                             case R.id.action_item2:
                                 selectedFragment = ItemTwoFragment.newInstance();
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity
 
         //Manually displaying the first fragment - one time only
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, ItemOneFragment.newInstance());
+        transaction.replace(R.id.frame_layout, FormulasFragment.newInstance());
         transaction.commit();
 
         //Used to select an item programmatically

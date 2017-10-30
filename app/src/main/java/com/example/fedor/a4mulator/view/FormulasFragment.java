@@ -1,4 +1,4 @@
-package com.example.fedor.a4mulator;
+package com.example.fedor.a4mulator.view;
 
 /**
  * Created by fedor on 21.10.2017.
@@ -10,9 +10,11 @@ package com.example.fedor.a4mulator;
         import android.view.View;
         import android.view.ViewGroup;
 
-public class ItemOneFragment extends Fragment {
-    public static ItemOneFragment newInstance() {
-        ItemOneFragment fragment = new ItemOneFragment();
+        import com.example.fedor.a4mulator.R;
+
+public class FormulasFragment extends Fragment {
+    public static FormulasFragment newInstance() {
+        FormulasFragment fragment = new FormulasFragment();
         return fragment;
     }
 

@@ -1,4 +1,4 @@
-package com.example.fedor.a4mulator;
+package com.example.fedor.a4mulator.view;
 
 /**
  * Created by fedor on 21.10.2017.
@@ -10,9 +10,11 @@ package com.example.fedor.a4mulator;
         import android.view.View;
         import android.view.ViewGroup;
 
-public class ItemThreeFragment extends Fragment {
-    public static ItemThreeFragment newInstance() {
-        ItemThreeFragment fragment = new ItemThreeFragment();
+        import com.example.fedor.a4mulator.R;
+
+public class ItemTwoFragment extends Fragment {
+    public static ItemTwoFragment newInstance() {
+        ItemTwoFragment fragment = new ItemTwoFragment();
         return fragment;
     }
 
@@ -24,6 +26,6 @@ public class ItemThreeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_item_three, container, false);
+        return inflater.inflate(R.layout.fragment_item_two, container, false);
     }
 }
