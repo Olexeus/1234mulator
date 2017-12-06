@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import com.example.fedor.a4mulator.R;
 
@@ -102,9 +102,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        final ImageButton button_sn_google, button_sn_facebook;
-        button_sn_google = (ImageButton) findViewById(R.id.button_sn_google);
-        button_sn_facebook = (ImageButton) findViewById(R.id.button_sn_facebook);
+        final Button button_sn_google, button_sn_facebook;
+        button_sn_google = (Button) findViewById(R.id.button_sn_google);
+        button_sn_facebook = (Button) findViewById(R.id.button_sn_facebook);
 
         button_sn_google.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -54,18 +54,24 @@
             android:gravity="center_horizontal"
             app:layout_constraintLeft_toRightOf="@+id/imageView"
             >
-            <ImageButton
-
-
+            <Button
                 android:background="@drawable/ic_google_connect"
                 android:id="@+id/button_sn_google"
                 android:layout_width="94dp"
+                android:drawableLeft="@drawable/rec36x36"
+                android:paddingLeft="-18dp"
+                android:drawablePadding="42dp"
+                android:text="Connect"
                 android:layout_height="36dp"
                 />
-            <ImageButton
+            <Button
                 android:id="@+id/button_sn_facebook"
+                android:drawableLeft="@drawable/rec36x36"
                 android:background="@drawable/ic_facebook_connect"
+                android:paddingLeft="-18dp"
+                android:drawablePadding="42dp"
                 android:layout_width="94dp"
+                android:text="Connect"
                 android:layout_height="36dp"
                />
         </LinearLayout>
