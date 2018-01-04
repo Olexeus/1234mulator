@@ -35,16 +35,15 @@
         android:paddingRight="@dimen/profile_padding"
         android:paddingTop="@dimen/profile_padding">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imageView"
-            style="@style/AlertDialog.AppCompat"
             android:layout_width="@dimen/profile_picture"
             android:layout_height="@dimen/profile_picture"
             android:padding="0dp"
             android:src="@drawable/ic_profile_picture"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-           />
+            app:civ_border_width="1dp"
+            app:civ_border_color="#ffffff"/>
         <LinearLayout
             android:layout_width="220dp"
             android:layout_height="wrap_content"
