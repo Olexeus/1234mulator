@@ -136,12 +136,12 @@ public class MainActivity extends AppCompatActivity
         //Now we will attach a click listener to the sign_in_button
         //and inside onClick() method we are calling the signIn() method that will open
         //google sign in intent
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
+        /*findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 signIn();
             }
-        });
+        });*/
     }
 
     @Override
@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity
         button_sn_google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                signIn();
                 if (button_sn_google1 == 0) {
                     button_sn_google1 = 1;
                     button_sn_google.setBackgroundResource(R.drawable.ic_google_connected);
@@ -297,7 +298,8 @@ public class MainActivity extends AppCompatActivity
     // Start of login methods
     // TODO LOG OUT
     // TODO UI
-    @Override
+
+/*    @Override
     protected void onStart() {
         super.onStart();
 
@@ -308,7 +310,7 @@ public class MainActivity extends AppCompatActivity
             finish();
             startActivity(new Intent(this, ProfileActivity.class));
         }
-    }
+    }*/
 
 
     @Override
@@ -370,8 +372,6 @@ public class MainActivity extends AppCompatActivity
         //starting the activity for result
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
-
 }
 
 

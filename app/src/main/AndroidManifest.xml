@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ProfileActivity" />
+        <activity android:name=".view.MainHeaderDrawerActivity"></activity>
     </application>
 
 </manifest>
