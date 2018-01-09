@@ -1,33 +1,36 @@
 {
+
   "project_info": {
-    "project_number": "882296129615",
-    "project_id": "firebase-mulator"
+    "project_number": "340395839137",
+    "firebase_url": "https://formula-project.firebaseio.com",
+    "project_id": "formula-project",
+    "storage_bucket": "formula-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:882296129615:android:8b179f10dd87bc5b",
+        "mobilesdk_app_id": "1:340395839137:android:8b179f10dd87bc5b",
         "android_client_info": {
           "package_name": "com.example.fedor.a4mulator"
         }
       },
       "oauth_client": [
         {
-          "client_id": "882296129615-nbk1dighr3k8q0gqlb4ahs4gbd7t96j8.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "882296129615-qe60u8ilka2gbkqhttr8jqnijqphj9h5.apps.googleusercontent.com",
+          "client_id": "340395839137-jv7egpu3eji7dqojaen2hrleve86d7b4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.fedor.a4mulator",
-            "certificate_hash": "eed4d4ca0c8604e5fbeb81d19559813851a89e86"
+            "certificate_hash": "522ae62d8b69eb3b210c9e6115be0bd92b3f28ef"
           }
+        },
+        {
+          "client_id": "340395839137-37k78g38hiuqjcce2p48epp69df19jvo.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBtmjfUPrqfurBnRpJn_W65EvAzGsY3ncE"
+          "current_key": "AIzaSyD3xjI7cYE1WzY47TUSbWVIjy3khQEsXYk"
         }
       ],
       "services": {
@@ -35,11 +38,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340395839137-37k78g38hiuqjcce2p48epp69df19jvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

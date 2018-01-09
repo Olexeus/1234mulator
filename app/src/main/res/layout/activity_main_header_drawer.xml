@@ -37,7 +37,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/imageView"
+            android:id="@+id/googleAvatar"
             android:layout_width="@dimen/profile_picture"
             android:layout_height="@dimen/profile_picture"
             android:padding="0dp"
@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center_horizontal"
-            app:layout_constraintLeft_toRightOf="@+id/imageView"
+            app:layout_constraintLeft_toRightOf="@+id/googleAvatar"
             >
             <Button
                 android:background="@drawable/ic_google_connect"
@@ -64,24 +64,24 @@
                 android:background="@drawable/ic_facebook_connect"
                 android:layout_width="94dp"
                 android:layout_height="36dp"
-               />
+                />
         </LinearLayout>
 
 
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/googleName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Android Studio"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/googleEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="android.studio@android.com" />
+
 
 
 </LinearLayout>
