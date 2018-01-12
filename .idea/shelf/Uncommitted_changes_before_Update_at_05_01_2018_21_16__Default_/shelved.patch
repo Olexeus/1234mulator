@@ -1,0 +1,486 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//noinspection GradleCompatible\napply plugin: 'com.android.application'\napply plugin: 'com.google.gms.google-services'\nandroid {\n    compileSdkVersion 26\n    buildToolsVersion '26.0.2'\n    defaultConfig {\n        applicationId \"com.example.fedor.a4mulator\"\n        minSdkVersion 19\n        targetSdkVersion 25\n        versionCode 1\n        versionName \"1.0\"\n        testInstrumentationRunner \"android.support.test.runner.AndroidJUnitRunner\"\n    }\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'\n        }\n    }\n    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }\n}\n\ndependencies {\n    compile fileTree(include: ['*.jar'], dir: 'libs')\n    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {\n        exclude group: 'com.android.support', module: 'support-annotations'\n    })\n    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta3'\n    compile 'com.android.support:appcompat-v7:26.1.0'\n    compile 'com.android.support:design:26.1.0'\n    compile 'com.android.support:support-v4:26.1.0'\n    compile 'com.android.support:cardview-v7:26.1.0'\n    compile 'com.android.support:recyclerview-v7:26.1.0'\n    testCompile 'junit:junit:4.12'\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ app/build.gradle	
+@@ -1,6 +1,5 @@
+ //noinspection GradleCompatible
+ apply plugin: 'com.android.application'
+-apply plugin: 'com.google.gms.google-services'
+ android {
+     compileSdkVersion 26
+     buildToolsVersion '26.0.2'
+@@ -17,11 +16,18 @@
+             minifyEnabled false
+             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+         }
++    }
++    packagingOptions{
++        exclude 'META-INF/LICENSE'
++        exclude 'META-INF/LICENSE-FIREBASE.txt'
++        exclude 'META-INF/NOTICE'
++
+     }
+     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
+ }
+ 
+ dependencies {
++
+     compile fileTree(include: ['*.jar'], dir: 'libs')
+     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+         exclude group: 'com.android.support', module: 'support-annotations'
+@@ -33,4 +39,8 @@
+     compile 'com.android.support:cardview-v7:26.1.0'
+     compile 'com.android.support:recyclerview-v7:26.1.0'
+     testCompile 'junit:junit:4.12'
++    implementation 'com.google.firebase:firebase-auth:11.0.4'
++    compile 'com.google.firebase:firebase-auth:11.0.4'
++    compile 'com.google.android.gms:play-services-auth:11.0.4'
+ }
++apply plugin: 'com.google.gms.google-services'
+\ No newline at end of file
+Index: app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.fedor.a4mulator.view;\n\nimport android.app.Activity;\nimport android.app.AlertDialog;\nimport android.app.Dialog;\nimport android.content.DialogInterface;\nimport android.content.Intent;\nimport android.net.Uri;\nimport android.os.Bundle;\nimport android.provider.MediaStore;\nimport android.support.annotation.NonNull;\nimport android.support.design.widget.BottomNavigationView;\nimport android.support.design.widget.NavigationView;\nimport android.support.v4.app.Fragment;\nimport android.support.v4.app.FragmentTransaction;\nimport android.support.v4.view.GravityCompat;\nimport android.support.v4.widget.DrawerLayout;\nimport android.support.v7.app.ActionBarDrawerToggle;\nimport android.support.v7.app.AppCompatActivity;\nimport android.support.v7.widget.Toolbar;\nimport android.view.LayoutInflater;\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.ImageButton;\nimport android.widget.ImageView;\n\nimport com.example.fedor.a4mulator.R;\n\npublic class MainActivity extends AppCompatActivity\n        implements NavigationView.OnNavigationItemSelectedListener {\n\n    char button_sn_google1,button_sn_facebook1 = 0;\n    ImageView avatar;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);\n        setSupportActionBar(toolbar);\n\n        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);\n        fab.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                Snackbar.make(view, \"Replace with your own action\", Snackbar.LENGTH_LONG)\n                        .setAction(\"Action\", null).show();\n            }\n        });*/\n\n        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);\n        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(\n                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);\n        drawer.setDrawerListener(toggle);\n        toggle.syncState();\n\n\n        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);\n        navigationView.setNavigationItemSelectedListener(this);\n        toolbar.setNavigationIcon(R.drawable.ic_account_circle_black_24dp);\n\n\n        BottomNavigationView bottomNavigationView = (BottomNavigationView)\n                findViewById(R.id.navigation);\n\n        bottomNavigationView.setOnNavigationItemSelectedListener\n                (new BottomNavigationView.OnNavigationItemSelectedListener() {\n                    @Override\n                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {\n                        Fragment selectedFragment = null;\n                        switch (item.getItemId()) {\n                            case R.id.action_item1:\n                                selectedFragment = FormulasFragment.newInstance();\n                                break;\n                            case R.id.action_item2:\n                                selectedFragment = ItemTwoFragment.newInstance();\n                                break;\n                            case R.id.action_item3:\n                                selectedFragment = ItemThreeFragment.newInstance();\n                                break;\n                        }\n                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();\n                        transaction.replace(R.id.frame_layout, selectedFragment);\n                        transaction.commit();\n                        return true;\n                    }\n                });\n\n        //Manually displaying the first fragment - one time only\n        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();\n        transaction.replace(R.id.frame_layout, FormulasFragment.newInstance());\n        transaction.commit();\n\n        //Used to select an item programmatically\n        //bottomNavigationView.getMenu().getItem(2).setChecked(true);\n    }\n\n    @Override\n    public void onBackPressed() {\n        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);\n        if (drawer.isDrawerOpen(GravityCompat.START)) {\n            drawer.closeDrawer(GravityCompat.START);\n        } else {\n            super.onBackPressed();\n        }\n    }\n\n\n    @Override\n    public boolean onCreateOptionsMenu(Menu menu) {\n        // Inflate the menu; this adds items to the action bar if it is present.\n        getMenuInflater().inflate(R.menu.main, menu);\n        final Button button_sn_google, button_sn_facebook;\n        avatar = (ImageView) findViewById(R.id.imageView) ;\n        button_sn_google = (Button) findViewById(R.id.button_sn_google);\n        button_sn_facebook = (Button) findViewById(R.id.button_sn_facebook);\n\n//TODO authorization\n        avatar.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                CamFragment camDlg = new CamFragment(MainActivity.this);\n                camDlg.show();\n            }\n        });\n        button_sn_google.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                if (button_sn_google1 == 0) {\n                    button_sn_google1 = 1;\n                    button_sn_google.setBackgroundResource(R.drawable.ic_google_connected);\n                } else {\n                    button_sn_google1 = 0;\n                    button_sn_google.setBackgroundResource(R.drawable.ic_google_connect);\n                }\n            }\n        });\n        button_sn_facebook.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                if (button_sn_facebook1== 0) {\n                    button_sn_facebook1 = 1;\n                    button_sn_facebook.setBackgroundResource(R.drawable.ic_facebook_connected);\n                } else {\n                    button_sn_facebook1 = 0;\n                    button_sn_facebook.setBackgroundResource(R.drawable.ic_facebook_connect);\n                }\n\n\n\n            }\n        });\n        return true;\n    }\n\n    @Override\n    public boolean onOptionsItemSelected(MenuItem item) {\n        // Handle action bar item clicks here. The action bar will\n        // automatically handle clicks on the Home/Up button, so long\n        // as you specify a parent activity in AndroidManifest.xml.\n        int id = item.getItemId();\n\n        //noinspection SimplifiableIfStatement\n        if (id == R.id.action_settings) {\n            return true;\n        }\n\n        return super.onOptionsItemSelected(item);\n    }\n\n    @SuppressWarnings(\"StatementWithEmptyBody\")\n    @Override\n    public boolean onNavigationItemSelected(MenuItem item) {\n        // Handle navigation view item clicks here.\n        int id = item.getItemId();\n\n        if (id == R.id.nav_camera) {\n            // Handle the camera action\n        } else if (id == R.id.nav_gallery) {\n\n        } else if (id == R.id.nav_slideshow) {\n\n        } else if (id == R.id.nav_manage) {\n\n        } else if (id == R.id.nav_share) {\n\n        } else if (id == R.id.nav_send) {\n\n        }\n\n        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);\n        drawer.closeDrawer(GravityCompat.START);\n        return true;\n    }\n    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {\n        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);\n        switch(requestCode) {\n            case 0:\n                if(resultCode == RESULT_OK){\n                    Uri selectedImage = imageReturnedIntent.getData();\n                    avatar.setImageURI(selectedImage);\n                }\n\n                break;\n            case 1:\n                if(resultCode == RESULT_OK){\n                    Uri selectedImage = imageReturnedIntent.getData();\n                    avatar.setImageURI(selectedImage);\n                }\n                break;\n        }\n    }\n}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java	
+@@ -11,6 +11,7 @@
+ import android.support.annotation.NonNull;
+ import android.support.design.widget.BottomNavigationView;
+ import android.support.design.widget.NavigationView;
++import android.support.design.widget.Snackbar;
+ import android.support.v4.app.Fragment;
+ import android.support.v4.app.FragmentTransaction;
+ import android.support.v4.view.GravityCompat;
+@@ -18,6 +19,7 @@
+ import android.support.v7.app.ActionBarDrawerToggle;
+ import android.support.v7.app.AppCompatActivity;
+ import android.support.v7.widget.Toolbar;
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.Menu;
+ import android.view.MenuItem;
+@@ -25,14 +27,39 @@
+ import android.widget.Button;
+ import android.widget.ImageButton;
+ import android.widget.ImageView;
++import android.widget.Toast;
+ 
+ import com.example.fedor.a4mulator.R;
++import com.google.android.gms.auth.api.Auth;
++import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
++import com.google.android.gms.auth.api.signin.GoogleSignInApi;
++import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
++import com.google.android.gms.auth.api.signin.GoogleSignInResult;
++import com.google.android.gms.common.ConnectionResult;
++import com.google.android.gms.common.SignInButton;
++import com.google.android.gms.common.api.ApiException;
++import com.google.android.gms.common.api.GoogleApiClient;
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.Task;
++import com.google.firebase.auth.AuthCredential;
++import com.google.firebase.auth.AuthResult;
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.auth.GoogleAuthProvider;
+ 
+ public class MainActivity extends AppCompatActivity
+         implements NavigationView.OnNavigationItemSelectedListener {
+ 
+     char button_sn_google1,button_sn_facebook1 = 0;
+     ImageView avatar;
++    private SignInButton GoogleSignInButton;
++    private FirebaseAuth  GoogleAuth;
++    private final static int RC_SIGN_IN = 2;
++    GoogleApiClient mGoogleApiClient;
++    FirebaseAuth.AuthStateListener GoogleAuthListener;
++
++
++
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -95,6 +122,42 @@
+ 
+         //Used to select an item programmatically
+         //bottomNavigationView.getMenu().getItem(2).setChecked(true);
++
++        // Configure sign-in to request the user's ID, email address, and basic
++        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
++
++        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
++                .requestIdToken(getString(R.string.default_web_client_id))
++                .requestEmail()
++                .build();
++        GoogleSignInButton = (SignInButton) findViewById(R.id.google_sign_in_button);
++        GoogleAuth = FirebaseAuth.getInstance();
++        GoogleSignInButton.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                signIn();
++            }
++        });
++        GoogleAuthListener = new FirebaseAuth.AuthStateListener() {
++            @Override
++            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
++                if (firebaseAuth.getCurrentUser() != null) {
++                    startActivity(new Intent(MainActivity.this, ItemTwoFragment.class));
++                }
++            }
++        };
++
++
++        mGoogleApiClient = new GoogleApiClient.Builder(this)
++                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
++                    @Override
++                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
++                        Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
++                    }
++                })
++                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
++                .build();
++
+     }
+ 
+     @Override
+@@ -107,7 +170,6 @@
+         }
+     }
+ 
+-
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         // Inflate the menu; this adds items to the action bar if it is present.
+@@ -194,6 +256,8 @@
+         drawer.closeDrawer(GravityCompat.START);
+         return true;
+     }
++
++/*    @Override
+     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+         switch(requestCode) {
+@@ -211,7 +275,64 @@
+                 }
+                 break;
+         }
++    }*/
++
++
++    private void signIn() {
++        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
++        startActivityForResult(signInIntent, RC_SIGN_IN);
+     }
++
++
++    @Override
++    public void onStart() {
++        super.onStart();
++        // Check if user is signed in (non-null) and update UI accordingly.
++        // FirebaseUser currentUser = GoogleAuth.getCurrentUser();
++        GoogleAuth.addAuthStateListener(GoogleAuthListener);
++        //updateUI(currentUser);
++    }
++
++    @Override
++    public void onActivityResult(int requestCode, int resultCode, Intent data) {
++        super.onActivityResult(requestCode, resultCode, data);
++
++        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
++        if (requestCode == RC_SIGN_IN) {
++            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
++            if (result.isSuccess()) {
++                GoogleSignInAccount account = result.getSignInAccount();
++                firebaseAuthWithGoogle(account);
++            } else {
++                Toast.makeText(MainActivity.this, "Auth went wrong", Toast.LENGTH_SHORT).show();
++            }
++        }
++    }
++
++    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
++        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
++        GoogleAuth.signInWithCredential(credential)
++                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
++                    @Override
++                    public void onComplete(@NonNull Task<AuthResult> task) {
++                        if (task.isSuccessful()) {
++                            // Sign in success, update UI with the signed-in user's information
++                            Log.d("TAG", "signInWithCredential:success");
++                            FirebaseUser user = GoogleAuth.getCurrentUser();
++                            //updateUI(user);
++                        } else {
++                            // If sign in fails, display a message to the user.
++                            Log.w("TAG", "signInWithCredential:failure", task.getException());
++                            Toast.makeText(MainActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
++                            // Snackbar.make(findViewById(R.id.), "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
++                            //updateUI(null);
++                        }
++
++                        // ...
++                    }
++                });
++    }
++
+ }
+ 
+ 
+Index: app/src/main/res/layout/fragment_item_one.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"fill_parent\"\n    android:layout_height=\"fill_parent\"\n    android:orientation=\"vertical\"\n    android:weightSum=\"1\"\n    android:layout_alignParentStart=\"true\"\n    android:layout_alignParentBottom=\"true\">\n\n    <HorizontalScrollView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_weight=\"0.01\">\n\n        <LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n            xmlns:tools=\"http://schemas.android.com/tools\"\n            xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\n            android:layout_height=\"wrap_content\"\n            android:layout_width=\"wrap_content\">\n            <!-- A CardView that contains a TextView -->\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"vertical\"\n                android:layout_margin=\"@dimen/theme_butt_margin\">\n                <android.support.v7.widget.CardView\n                    xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\n                    android:id=\"@+id/card_view\"\n                    android:layout_gravity=\"center\"\n                    android:layout_width=\"@dimen/theme_butt_width\"\n                    android:layout_height=\"@dimen/theme_butt_height\"\n                    android:layout_marginBottom=\"@dimen/theme_butt_margin\"\n                    card_view:cardCornerRadius=\"12dp\"\n                    card_view:cardBackgroundColor=\"@color/colorThemeButton\">\n\n                    <TextView\n                        android:id=\"@+id/info_text\"\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"match_parent\"\n                        android:text=\"@string/app_name\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/colorPrimary\"\n                        />\n                </android.support.v7.widget.CardView>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:textSize=\"@dimen/theme_name\"\n                    android:text=\"@string/item_1\"/>\n            </LinearLayout>\n\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"vertical\"\n                android:layout_margin=\"@dimen/theme_butt_margin\">\n                <android.support.v7.widget.CardView\n                    xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\n                    android:id=\"@+id/card_view2\"\n                    android:layout_gravity=\"center\"\n                    android:layout_width=\"@dimen/theme_butt_width\"\n                    android:layout_height=\"@dimen/theme_butt_height\"\n                    android:layout_marginBottom=\"@dimen/theme_butt_margin\"\n                    card_view:cardCornerRadius=\"12dp\"\n                    card_view:cardBackgroundColor=\"@color/colorThemeButton\">\n\n                    <TextView\n                        android:id=\"@+id/info_text2\"\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"match_parent\"\n                        android:text=\"@string/app_name\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/colorPrimary\"\n                        />\n                </android.support.v7.widget.CardView>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:textSize=\"@dimen/theme_name\"\n                    android:text=\"@string/item_1\"/>\n            </LinearLayout>\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"vertical\"\n                android:layout_margin=\"@dimen/theme_butt_margin\">\n                <android.support.v7.widget.CardView\n                    xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\n                    android:id=\"@+id/card_view3\"\n                    android:layout_gravity=\"center\"\n                    android:layout_width=\"@dimen/theme_butt_width\"\n                    android:layout_height=\"@dimen/theme_butt_height\"\n                    android:layout_marginBottom=\"@dimen/theme_butt_margin\"\n                    card_view:cardCornerRadius=\"12dp\"\n                    card_view:cardBackgroundColor=\"@color/colorThemeButton\">\n\n                    <TextView\n                        android:id=\"@+id/info_text3\"\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"match_parent\"\n                        android:text=\"@string/app_name\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/colorPrimary\"\n                        />\n                </android.support.v7.widget.CardView>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:textSize=\"@dimen/theme_name\"\n                    android:text=\"@string/item_1\"/>\n            </LinearLayout>\n            <LinearLayout\n                android:layout_width=\"wrap_content\"\n                android:layout_height=\"wrap_content\"\n                android:orientation=\"vertical\"\n                android:layout_margin=\"@dimen/theme_butt_margin\">\n                <android.support.v7.widget.CardView\n                    xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\n                    android:id=\"@+id/card_view4\"\n                    android:layout_gravity=\"center\"\n                    android:layout_width=\"@dimen/theme_butt_width\"\n                    android:layout_height=\"@dimen/theme_butt_height\"\n                    android:layout_marginBottom=\"@dimen/theme_butt_margin\"\n                    card_view:cardCornerRadius=\"12dp\"\n                    card_view:cardBackgroundColor=\"@color/colorThemeButton\">\n\n                    <TextView\n                        android:id=\"@+id/info_text4\"\n                        android:layout_width=\"match_parent\"\n                        android:layout_height=\"match_parent\"\n                        android:text=\"@string/app_name\"\n                        android:gravity=\"center\"\n                        android:textColor=\"@color/colorPrimary\"\n                        />\n                </android.support.v7.widget.CardView>\n                <TextView\n                    android:layout_width=\"wrap_content\"\n                    android:layout_height=\"wrap_content\"\n                    android:textSize=\"@dimen/theme_name\"\n                    android:text=\"@string/item_1\"/>\n            </LinearLayout>\n        </LinearLayout>\n    </HorizontalScrollView>\n\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_item_one.xml	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ app/src/main/res/layout/fragment_item_one.xml	
+@@ -1,11 +1,12 @@
+-
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+-    android:orientation="vertical"
+-    android:weightSum="1"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_alignParentBottom="true"
+     android:layout_alignParentStart="true"
+-    android:layout_alignParentBottom="true">
++    android:orientation="vertical"
++    android:weightSum="1">
+ 
+     <HorizontalScrollView
+         android:layout_width="wrap_content"
+@@ -13,133 +14,155 @@
+         android:layout_weight="0.01">
+ 
+         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-            xmlns:tools="http://schemas.android.com/tools"
+             xmlns:card_view="http://schemas.android.com/apk/res-auto"
+-            android:layout_height="wrap_content"
+-            android:layout_width="wrap_content">
++            xmlns:tools="http://schemas.android.com/tools"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content">
+             <!-- A CardView that contains a TextView -->
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical"
+-                android:layout_margin="@dimen/theme_butt_margin">
+-                <android.support.v7.widget.CardView
+-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
++                android:layout_margin="@dimen/theme_butt_margin"
++                android:orientation="vertical">
++
++                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                     android:id="@+id/card_view"
+-                    android:layout_gravity="center"
+                     android:layout_width="@dimen/theme_butt_width"
+                     android:layout_height="@dimen/theme_butt_height"
++                    android:layout_gravity="center"
+                     android:layout_marginBottom="@dimen/theme_butt_margin"
+-                    card_view:cardCornerRadius="12dp"
+-                    card_view:cardBackgroundColor="@color/colorThemeButton">
++                    card_view:cardBackgroundColor="@color/colorThemeButton"
++                    card_view:cardCornerRadius="12dp">
+ 
+                     <TextView
+                         android:id="@+id/info_text"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+-                        android:text="@string/app_name"
+                         android:gravity="center"
+-                        android:textColor="@color/colorPrimary"
+-                        />
++                        android:text="@string/app_name"
++                        android:textColor="@color/colorPrimary" />
+                 </android.support.v7.widget.CardView>
++
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:textSize="@dimen/theme_name"
+-                    android:text="@string/item_1"/>
++                    android:text="@string/item_1"
++                    android:textSize="@dimen/theme_name" />
+             </LinearLayout>
+ 
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical"
+-                android:layout_margin="@dimen/theme_butt_margin">
+-                <android.support.v7.widget.CardView
+-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
++                android:layout_margin="@dimen/theme_butt_margin"
++                android:orientation="vertical">
++
++                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                     android:id="@+id/card_view2"
+-                    android:layout_gravity="center"
+                     android:layout_width="@dimen/theme_butt_width"
+                     android:layout_height="@dimen/theme_butt_height"
++                    android:layout_gravity="center"
+                     android:layout_marginBottom="@dimen/theme_butt_margin"
+-                    card_view:cardCornerRadius="12dp"
+-                    card_view:cardBackgroundColor="@color/colorThemeButton">
++                    card_view:cardBackgroundColor="@color/colorThemeButton"
++                    card_view:cardCornerRadius="12dp">
+ 
+                     <TextView
+                         android:id="@+id/info_text2"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+-                        android:text="@string/app_name"
+                         android:gravity="center"
+-                        android:textColor="@color/colorPrimary"
+-                        />
++                        android:text="@string/app_name"
++                        android:textColor="@color/colorPrimary" />
+                 </android.support.v7.widget.CardView>
++
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:textSize="@dimen/theme_name"
+-                    android:text="@string/item_1"/>
++                    android:text="@string/item_1"
++                    android:textSize="@dimen/theme_name" />
+             </LinearLayout>
++
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical"
+-                android:layout_margin="@dimen/theme_butt_margin">
+-                <android.support.v7.widget.CardView
+-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
++                android:layout_margin="@dimen/theme_butt_margin"
++                android:orientation="vertical">
++
++                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                     android:id="@+id/card_view3"
+-                    android:layout_gravity="center"
+                     android:layout_width="@dimen/theme_butt_width"
+                     android:layout_height="@dimen/theme_butt_height"
++                    android:layout_gravity="center"
+                     android:layout_marginBottom="@dimen/theme_butt_margin"
+-                    card_view:cardCornerRadius="12dp"
+-                    card_view:cardBackgroundColor="@color/colorThemeButton">
++                    card_view:cardBackgroundColor="@color/colorThemeButton"
++                    card_view:cardCornerRadius="12dp">
+ 
+                     <TextView
+                         android:id="@+id/info_text3"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+-                        android:text="@string/app_name"
+                         android:gravity="center"
+-                        android:textColor="@color/colorPrimary"
+-                        />
++                        android:text="@string/app_name"
++                        android:textColor="@color/colorPrimary" />
+                 </android.support.v7.widget.CardView>
++
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:textSize="@dimen/theme_name"
+-                    android:text="@string/item_1"/>
++                    android:text="@string/item_1"
++                    android:textSize="@dimen/theme_name" />
+             </LinearLayout>
++
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+-                android:orientation="vertical"
+-                android:layout_margin="@dimen/theme_butt_margin">
+-                <android.support.v7.widget.CardView
+-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
++                android:layout_margin="@dimen/theme_butt_margin"
++                android:orientation="vertical">
++
++                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                     android:id="@+id/card_view4"
+-                    android:layout_gravity="center"
+                     android:layout_width="@dimen/theme_butt_width"
+                     android:layout_height="@dimen/theme_butt_height"
++                    android:layout_gravity="center"
+                     android:layout_marginBottom="@dimen/theme_butt_margin"
+-                    card_view:cardCornerRadius="12dp"
+-                    card_view:cardBackgroundColor="@color/colorThemeButton">
++                    card_view:cardBackgroundColor="@color/colorThemeButton"
++                    card_view:cardCornerRadius="12dp">
+ 
+                     <TextView
+                         android:id="@+id/info_text4"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+-                        android:text="@string/app_name"
+                         android:gravity="center"
+-                        android:textColor="@color/colorPrimary"
+-                        />
++                        android:text="@string/app_name"
++                        android:textColor="@color/colorPrimary" />
+                 </android.support.v7.widget.CardView>
++
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+-                    android:textSize="@dimen/theme_name"
+-                    android:text="@string/item_1"/>
++                    android:text="@string/item_1"
++                    android:textSize="@dimen/theme_name" />
+             </LinearLayout>
+         </LinearLayout>
+     </HorizontalScrollView>
++    <android.support.constraint.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++
++        <com.google.android.gms.common.SignInButton
++            android:id="@+id/google_sign_in_button"
++            android:layout_width="150dp"
++            android:layout_height="48dp"
++            android:layout_marginEnd="8dp"
++            android:layout_marginStart="8dp"
++            android:layout_marginTop="100dp"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="0.497"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent">
++
++        </com.google.android.gms.common.SignInButton>
++
++    </android.support.constraint.ConstraintLayout>
++
+ 
+ </LinearLayout>
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\n\nbuildscript {\n    repositories {\n        jcenter()\n        google()\n    }\n    dependencies {\n        classpath 'com.android.tools.build:gradle:3.0.0'\n        classpath 'com.google.gms:google-services:3.0.0'\n        // NOTE: Do not place your application dependencies here; they belong\n        // in the individual module build.gradle files\n    }\n}\n\nallprojects {\n    repositories {\n        jcenter()\n        google()\n    }\n}\n\ntask clean(type: Delete) {\n    delete rootProject.buildDir\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ build.gradle	
+@@ -7,7 +7,7 @@
+     }
+     dependencies {
+         classpath 'com.android.tools.build:gradle:3.0.0'
+-        classpath 'com.google.gms:google-services:3.0.0'
++        classpath 'com.google.gms:google-services:3.1.0'
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+     }
