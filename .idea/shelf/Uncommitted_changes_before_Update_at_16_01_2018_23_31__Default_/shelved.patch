@@ -1,0 +1,175 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2.xml	(revision 10e943f118644be0bd8d1255f8fe5306ff7ca606)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2.xml	(revision 10e943f118644be0bd8d1255f8fe5306ff7ca606)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2" date="1515179868015" recycled="true" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 05.01.2018 21:16 [Default]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2/shelved.patch	(revision 10e943f118644be0bd8d1255f8fe5306ff7ca606)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_05_01_2018_21_16__Default_2/shelved.patch	(revision 10e943f118644be0bd8d1255f8fe5306ff7ca606)
+@@ -1,106 +0,0 @@
+-Index: app/google-services.json
+-===================================================================
+---- app/google-services.json	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
+-+++ app/google-services.json	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
+-@@ -1,48 +0,0 @@
+--{
+--  "project_info": {
+--    "project_number": "882296129615",
+--    "project_id": "firebase-mulator"
+--  },
+--  "client": [
+--    {
+--      "client_info": {
+--        "mobilesdk_app_id": "1:882296129615:android:8b179f10dd87bc5b",
+--        "android_client_info": {
+--          "package_name": "com.example.fedor.a4mulator"
+--        }
+--      },
+--      "oauth_client": [
+--        {
+--          "client_id": "882296129615-nbk1dighr3k8q0gqlb4ahs4gbd7t96j8.apps.googleusercontent.com",
+--          "client_type": 3
+--        },
+--        {
+--          "client_id": "882296129615-qe60u8ilka2gbkqhttr8jqnijqphj9h5.apps.googleusercontent.com",
+--          "client_type": 1,
+--          "android_info": {
+--            "package_name": "com.example.fedor.a4mulator",
+--            "certificate_hash": "eed4d4ca0c8604e5fbeb81d19559813851a89e86"
+--          }
+--        }
+--      ],
+--      "api_key": [
+--        {
+--          "current_key": "AIzaSyBtmjfUPrqfurBnRpJn_W65EvAzGsY3ncE"
+--        }
+--      ],
+--      "services": {
+--        "analytics_service": {
+--          "status": 1
+--        },
+--        "appinvite_service": {
+--          "status": 1,
+--          "other_platform_oauth_client": []
+--        },
+--        "ads_service": {
+--          "status": 1
+--        }
+--      }
+--    }
+--  ],
+--  "configuration_version": "1"
+--}
+-\ No newline at end of file
+-Index: .idea/modules.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/1234mulator.iml\" filepath=\"$PROJECT_DIR$/1234mulator.iml\" />\n      <module fileurl=\"file://C:\\Users\\Nazar\\AndroidStudioProjects\\1234mulator\\4mulator.iml\" filepath=\"C:\\Users\\Nazar\\AndroidStudioProjects\\1234mulator\\4mulator.iml\" />\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\n    </modules>\n  </component>\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/modules.xml	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
+-+++ .idea/modules.xml	
+-@@ -2,8 +2,7 @@
+- <project version="4">
+-   <component name="ProjectModuleManager">
+-     <modules>
+--      <module fileurl="file://$PROJECT_DIR$/1234mulator.iml" filepath="$PROJECT_DIR$/1234mulator.iml" />
+--      <module fileurl="file://C:\Users\Nazar\AndroidStudioProjects\1234mulator\4mulator.iml" filepath="C:\Users\Nazar\AndroidStudioProjects\1234mulator\4mulator.iml" />
+-+      <module fileurl="file://$PROJECT_DIR$/4mulator.iml" filepath="$PROJECT_DIR$/4mulator.iml" />
+-       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+-     </modules>
+-   </component>
+-Index: .idea/dictionaries/fedor.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/dictionaries/fedor.xml	
+-+++ .idea/dictionaries/fedor.xml	
+-@@ -0,0 +1,8 @@
+-+<component name="ProjectDictionaryState">
+-+  <dictionary name="fedor">
+-+    <words>
+-+      <w>firebase</w>
+-+      <w>snackbar</w>
+-+    </words>
+-+  </dictionary>
+-+</component>
+-\ No newline at end of file
+-Index: app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java	
+-+++ app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java	
+-@@ -0,0 +1,8 @@
+-+package com.example.fedor.a4mulator.view;
+-+
+-+/**
+-+ * Created by fedor on 04.01.2018.
+-+ */
+-+
+-+public class GoogleAuth {
+-+}
+Index: app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.fedor.a4mulator.view;\n\nimport android.content.Context;\nimport android.content.Intent;\nimport android.graphics.drawable.ColorDrawable;\nimport android.os.Bundle;\nimport android.support.annotation.NonNull;\nimport android.support.design.widget.BottomNavigationView;\nimport android.support.design.widget.NavigationView;\nimport android.support.v4.app.Fragment;\nimport android.support.v4.app.FragmentTransaction;\nimport android.support.v4.view.GravityCompat;\nimport android.support.v4.widget.DrawerLayout;\nimport android.support.v7.app.ActionBarDrawerToggle;\nimport android.support.v7.app.AppCompatActivity;\nimport android.support.v7.widget.Toolbar;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.ImageView;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport com.bumptech.glide.Glide;\nimport com.example.fedor.a4mulator.R;\nimport com.google.android.gms.auth.api.signin.GoogleSignIn;\nimport com.google.android.gms.auth.api.signin.GoogleSignInAccount;\nimport com.google.android.gms.auth.api.signin.GoogleSignInClient;\nimport com.google.android.gms.auth.api.signin.GoogleSignInOptions;\nimport com.google.android.gms.common.api.ApiException;\nimport com.google.android.gms.tasks.OnCompleteListener;\nimport com.google.android.gms.tasks.Task;\nimport com.google.firebase.auth.AuthCredential;\nimport com.google.firebase.auth.AuthResult;\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.auth.GoogleAuthProvider;\n\npublic class MainActivity extends AppCompatActivity\n        implements NavigationView.OnNavigationItemSelectedListener {\n\n    char button_sn_google1,button_sn_facebook1 = 0;\n    static final int REQUEST_IMAGE_CAPTURE = 1;\n    ImageView avatar;\n\n\n    private static final String TAG = \"GoogleActivity\";\n    private static final int RC_SIGN_IN = 9001;\n\n    // [START declare_auth]\n    private FirebaseAuth mAuth;\n    // [END declare_auth]\n\n    private GoogleSignInClient mGoogleSignInClient;\n    private TextView googleName;\n    private TextView googleEmail;\n    private ImageView googleAvatar;\n    private Button button_sn_google, button_sn_facebook;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n        Toolbar toolbar = findViewById(R.id.toolbar);\n        setSupportActionBar(toolbar);\n        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);\n        fab.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                Snackbar.make(view, \"Replace with your own action\", Snackbar.LENGTH_LONG)\n                        .setAction(\"Action\", null).show();\n            }\n        });*/\n        DrawerLayout drawer = findViewById(R.id.drawer_layout);\n        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(\n                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);\n        drawer.setDrawerListener(toggle);\n        toggle.syncState();\n\n\n        NavigationView navigationView = findViewById(R.id.nav_view);\n        navigationView.setNavigationItemSelectedListener(this);\n        toolbar.setNavigationIcon(R.drawable.ic_account_circle_black_24dp);\n\n\n        BottomNavigationView bottomNavigationView =\n                findViewById(R.id.navigation);\n\n        bottomNavigationView.setOnNavigationItemSelectedListener\n                (new BottomNavigationView.OnNavigationItemSelectedListener() {\n                    @Override\n                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {\n                        Fragment selectedFragment = null;\n                        switch (item.getItemId()) {\n                            case R.id.action_item1:\n                                selectedFragment = FormulasFragment.newInstance();\n                                break;\n                            case R.id.action_item2:\n                                selectedFragment = ItemTwoFragment.newInstance();\n                                break;\n                            case R.id.action_item3:\n                                selectedFragment = ItemThreeFragment.newInstance();\n                                break;\n                        }\n                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();\n                        transaction.replace(R.id.frame_layout, selectedFragment);\n                        transaction.commit();\n                        return true;\n                    }\n                });\n\n        //Manually displaying the first fragment - one time only\n        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();\n        transaction.replace(R.id.frame_layout, FormulasFragment.newInstance());\n        transaction.commit();\n\n        // [START config_signin]\n        // Configure Google Sign In\n        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)\n                .requestIdToken(getString(R.string.default_web_client_id))\n                .requestEmail()\n                .build();\n        // [END config_signin]\n\n        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);\n\n        // [START initialize_auth]\n        mAuth = FirebaseAuth.getInstance();\n        // [END initialize_auth]\n\n\n    }\n\n    @Override\n    public void onBackPressed() {\n        DrawerLayout drawer = findViewById(R.id.drawer_layout);\n        if (drawer.isDrawerOpen(GravityCompat.START)) {\n            drawer.closeDrawer(GravityCompat.START);\n        } else {\n            super.onBackPressed();\n        }\n    }\n\n    @Override\n    public boolean onCreateOptionsMenu(Menu menu) {\n        // Inflate the menu; this adds items to the action bar if it is present.\n        getMenuInflater().inflate(R.menu.main, menu);\n\n        googleName = findViewById(R.id.googleName);\n        googleEmail =  findViewById(R.id.googleEmail);\n        googleAvatar = findViewById(R.id.googleAvatar);\n        avatar = findViewById(R.id.googleAvatar) ;\n        button_sn_google = findViewById(R.id.button_sn_google);\n        button_sn_facebook = findViewById(R.id.button_sn_facebook);\n\n\n\n        //TODO authorization\n        /*avatar.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                CamFragment camDlg = new CamFragment(MainActivity.this);\n                camDlg.show();\n                camDlg.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));\n            }\n        });*/\n\n        button_sn_google.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                if (button_sn_google1 == 0) {\n                    signIn();\n                } else {\n                    signOut();\n                }\n            }\n        });\n        button_sn_facebook.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View v) {\n                if (button_sn_facebook1== 0) {\n                    button_sn_facebook1 = 1;\n                    button_sn_facebook.setBackgroundResource(R.drawable.ic_facebook_connected);\n                } else {\n                    button_sn_facebook1 = 0;\n                    button_sn_facebook.setBackgroundResource(R.drawable.ic_facebook_connect);\n                }\n\n\n\n            }\n        });\n        FirebaseUser currentUser = mAuth.getCurrentUser();\n        updateUI(currentUser);\n        return true;\n    }\n\n    @Override\n    public boolean onOptionsItemSelected(MenuItem item) {\n        // Handle action bar item clicks here. The action bar will\n        // automatically handle clicks on the Home/Up button, so long\n        // as you specify a parent activity in AndroidManifest.xml.\n        int id = item.getItemId();\n\n        //noinspection SimplifiableIfStatement\n        if (id == R.id.action_settings) {\n            return true;\n        }\n\n        return super.onOptionsItemSelected(item);\n    }\n\n    @SuppressWarnings(\"StatementWithEmptyBody\")\n    @Override\n    public boolean onNavigationItemSelected(MenuItem item) {\n        // Handle navigation view item clicks here.\n        int id = item.getItemId();\n\n        if (id == R.id.nav_camera) {\n            // Handle the camera action\n        } else if (id == R.id.nav_gallery) {\n\n        } else if (id == R.id.nav_slideshow) {\n\n        } else if (id == R.id.nav_manage) {\n\n        } else if (id == R.id.nav_share) {\n\n        } else if (id == R.id.nav_send) {\n\n        }\n\n        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);\n        drawer.closeDrawer(GravityCompat.START);\n        return true;\n    }\n\n    // TODO : onActivityResult DUPLICATES problem\n/*    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {\n        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);\n//        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES\n//        TODO :  remake these methods with mvp\n        switch(requestCode) {\n            case 1:\n                if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {\n                    Bundle extras = imageReturnedIntent.getExtras();\n                    Bitmap imageBitmap = (Bitmap) extras.get(\"data\");\n//                    avatar.setImageBitmap(imageBitmap);\n  //                  save to db\n                    ByteArrayOutputStream baos = new ByteArrayOutputStream();\n                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);\n                    byte[] b1 = baos.toByteArray();\n\n                    String encodedImage = Base64.encodeToString(b1, Base64.DEFAULT);\n\n                    SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);\n                    SharedPreferences.Editor editor = sharedPref.edit();\n                    editor.putString(imageReturnedIntent.getData().toString(),\"avatar\");\n                    editor.commit();\n//\n//                    SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);\n                    String previouslyEncodedImage = sharedPref.getString(\"image_data\", \"\");\n\n                    if( !previouslyEncodedImage.equalsIgnoreCase(\"\") ){\n                        byte[] b2 = Base64.decode(previouslyEncodedImage, Base64.DEFAULT);\n                        Bitmap bitmap = BitmapFactory.decodeByteArray(b2, 0, b2.length);\n                        avatar.setImageBitmap(bitmap);\n                    }\n                }\n\n                break;\n            case 2:\n                if(resultCode == RESULT_OK){\n                    SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);\n                    SharedPreferences.Editor editor = sharedPref.edit();\n                    editor.putString(\"avatar\",imageReturnedIntent.getData().toString());\n                    editor.commit();\n                    editor.apply();\n                    Uri image = Uri.parse(imageReturnedIntent.getData().toString());\n                    avatar.setImageURI(image);\n                }\n                break;\n        }\n    }*/\n\n    protected void deleteAvatar(){\n        avatar.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_picture));\n    }\n\n    // Start of login methods\n    // TODO LOG OUT\n    // TODO UI\n\n    // [START on_start_check_user]\n    @Override\n    public void onStart() {\n        super.onStart();\n        // Check if user is signed in (non-null) and update UI accordingly.\n\n    }\n    // [END on_start_check_user]\n\n    // [START onactivityresult]\n    @Override\n    public void onActivityResult(int requestCode, int resultCode, Intent data) {\n        super.onActivityResult(requestCode, resultCode, data);\n\n        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);\n        if (requestCode == RC_SIGN_IN) {\n            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);\n            try {\n                // Google Sign In was successful, authenticate with Firebase\n                GoogleSignInAccount account = task.getResult(ApiException.class);\n                firebaseAuthWithGoogle(account);\n            } catch (ApiException e) {\n                // Google Sign In failed, update UI appropriately\n                Log.w(TAG, \"Google sign in failed\", e);\n                // [START_EXCLUDE]\n                updateUI(null);\n                // [END_EXCLUDE]\n            }\n        }\n    }\n    // [END onactivityresult]\n\n    // [START auth_with_google]\n    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {\n        Log.d(TAG, \"firebaseAuthWithGoogle:\" + acct.getId());\n\n        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);\n        mAuth.signInWithCredential(credential)\n                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {\n                    @Override\n                    public void onComplete(@NonNull Task<AuthResult> task) {\n                        if (task.isSuccessful()) {\n                            // Sign in success, update UI with the signed-in user's information\n                            Log.d(TAG, \"signInWithCredential:success\");\n                            FirebaseUser user = mAuth.getCurrentUser();\n                            Toast.makeText(MainActivity.this, \"User Signed In\", Toast.LENGTH_SHORT).show();\n                            updateUI(user);\n                        } else {\n                            // If sign in fails, display a message to the user.\n                            Log.w(TAG, \"signInWithCredential:failure\", task.getException());\n                            Toast.makeText(MainActivity.this, \"Authentication failed.\",\n                                    Toast.LENGTH_SHORT).show();\n                        }\n\n                    }\n                });\n    }\n    // [END auth_with_google]\n\n    // [START signin]\n    private void signIn() {\n        Intent signInIntent = mGoogleSignInClient.getSignInIntent();\n        startActivityForResult(signInIntent, RC_SIGN_IN);\n    }\n    // [END signin]\n\n    private void signOut() {\n        // Firebase sign out\n        mAuth.signOut();\n\n        // Google sign out\n        mGoogleSignInClient.signOut().addOnCompleteListener(this,\n                new OnCompleteListener<Void>() {\n                    @Override\n                    public void onComplete(@NonNull Task<Void> task) {\n                       updateUI(null);\n                    }\n                });\n    }\n\n    private void revokeAccess() {\n        // Firebase sign out\n        mAuth.signOut();\n\n        // Google revoke access\n        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,\n                new OnCompleteListener<Void>() {\n                    @Override\n                    public void onComplete(@NonNull Task<Void> task) {\n                        updateUI(null);\n                    }\n                });\n    }\n\n    private void updateUI(FirebaseUser user) {\n\n        if (user != null) {\n            Toast.makeText(MainActivity.this, user.getEmail(),\n                    Toast.LENGTH_SHORT).show();\n            Glide.with(this)\n                    .load(user.getPhotoUrl())\n                    .into(googleAvatar);\n\n            googleName.setText(user.getDisplayName());\n            googleEmail.setText(user.getEmail());\n            button_sn_google1 = 1;\n            button_sn_google.setBackgroundResource(R.drawable.ic_google_connected);\n\n        } else {\n            button_sn_google1 = 0;\n            button_sn_google.setBackgroundResource(R.drawable.ic_google_connect);\n            Toast.makeText(MainActivity.this, \"No Users\",\n                    Toast.LENGTH_SHORT).show();\n        }\n    }\n\n}\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java	(revision 10e943f118644be0bd8d1255f8fe5306ff7ca606)
++++ app/src/main/java/com/example/fedor/a4mulator/view/MainActivity.java	(revision )
+@@ -2,6 +2,9 @@
+ 
+ import android.content.Context;
+ import android.content.Intent;
++import android.content.SharedPreferences;
++import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
+ import android.graphics.drawable.ColorDrawable;
+ import android.os.Bundle;
+ import android.support.annotation.NonNull;
+@@ -14,6 +17,7 @@
+ import android.support.v7.app.ActionBarDrawerToggle;
+ import android.support.v7.app.AppCompatActivity;
+ import android.support.v7.widget.Toolbar;
++import android.util.Base64;
+ import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.Menu;
+@@ -39,6 +43,8 @@
+ import com.google.firebase.auth.FirebaseUser;
+ import com.google.firebase.auth.GoogleAuthProvider;
+ 
++import java.io.ByteArrayOutputStream;
++
+ public class MainActivity extends AppCompatActivity
+         implements NavigationView.OnNavigationItemSelectedListener {
+ 
+@@ -239,7 +245,7 @@
+     }
+ 
+     // TODO : onActivityResult DUPLICATES problem
+-/*    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
++    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+ //        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES
+ //        TODO :  remake these methods with mvp
+@@ -284,7 +290,7 @@
+                 }
+                 break;
+         }
+-    }*/
++    }
+ 
+     protected void deleteAvatar(){
+         avatar.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_picture));

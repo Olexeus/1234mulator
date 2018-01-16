@@ -37,7 +37,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/googleAvatar"
+            android:id="@+id/Avatar"
             android:layout_width="@dimen/profile_picture"
             android:layout_height="@dimen/profile_picture"
             android:padding="0dp"
@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center_horizontal"
-            app:layout_constraintLeft_toRightOf="@+id/googleAvatar"
+            app:layout_constraintLeft_toRightOf="@+id/Avatar"
             >
             <Button
                 android:background="@drawable/ic_google_connect"

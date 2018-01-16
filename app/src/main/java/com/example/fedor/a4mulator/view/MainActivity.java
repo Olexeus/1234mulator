@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -19,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +46,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -156,7 +160,7 @@ public class MainActivity extends AppCompatActivity
 
         googleName = findViewById(R.id.googleName);
         googleEmail =  findViewById(R.id.googleEmail);
-        googleAvatar = findViewById(R.id.googleAvatar);
+        googleAvatar = findViewById(R.id.Avatar);
         avatar = findViewById(R.id.googleAvatar) ;
         button_sn_google = findViewById(R.id.button_sn_google);
         button_sn_facebook = findViewById(R.id.button_sn_facebook);
@@ -243,10 +247,31 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // TODO : onActivityResult DUPLICATES problem
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void deleteAvatar(){
+        avatar.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_picture));
+    }
+
+    // Start of login methods
+    // TODO LOG OUT
+    // TODO UI
+
+    // [START on_start_check_user]
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+
+    }
+    // [END on_start_check_user]
+
+    // [START onactivityresult]
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
+//        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
 //        TODO :  remake these methods with mvp
         switch(requestCode) {
             case 1:
@@ -254,7 +279,7 @@ public class MainActivity extends AppCompatActivity
                     Bundle extras = data.getExtras();
                     Bitmap imageBitmap = (Bitmap) extras.get("data");
 //                    avatar.setImageBitmap(imageBitmap);
-  //                  save to db
+//                  save to db
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] b1 = baos.toByteArray();
@@ -304,24 +329,7 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
-
-    protected void deleteAvatar(){
-        avatar.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_picture));
-    }
-
-    // Start of login methods
-    // TODO LOG OUT
-    // TODO UI
-
-    // [START on_start_check_user]
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-
-    }
-    // [END on_start_check_user]
-
+    // [END onactivityresult]
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
