@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity
     // [END declare_auth]
 
     private GoogleSignInClient mGoogleSignInClient;
+    private TextView googleName;
+    private TextView googleEmail;
+    private ImageView googleAvatar;
+    private Button button_sn_google, button_sn_facebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +74,6 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -145,14 +148,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        final Button button_sn_google, button_sn_facebook;
 
+        googleName = findViewById(R.id.googleName);
+        googleEmail =  findViewById(R.id.googleEmail);
+        googleAvatar = findViewById(R.id.googleAvatar);
         avatar = findViewById(R.id.googleAvatar) ;
         button_sn_google = findViewById(R.id.button_sn_google);
         button_sn_facebook = findViewById(R.id.button_sn_facebook);
 
 
-//TODO authorization
+
+        //TODO authorization
         /*avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,6 +193,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
         return true;
     }
 
@@ -286,25 +294,12 @@ public class MainActivity extends AppCompatActivity
     // TODO LOG OUT
     // TODO UI
 
-/*    @Override
-    protected void onStart() {
-        super.onStart();
-
-        //if the user is already signed in
-        //we will close this activity
-        //and take the user to profile activity
-        if (mAuth.getCurrentUser() != null) {
-            finish();
-            startActivity(new Intent(this, ProfileActivity.class));
-        }
-    }*/
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+
     }
     // [END on_start_check_user]
 
@@ -394,39 +389,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void updateUI(FirebaseUser user) {
-        /*hideProgressDialog();
-        if (user != null) {
-            mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
-            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-        } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
-
-            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
-        }*/
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.activity_main_header_drawer, null);
-
-        final Button button_sn_google, button_sn_facebook;
-
-        TextView googleName = (TextView) view.findViewById(R.id.googleName);
-        TextView googleEmail = (TextView) view.findViewById(R.id.googleEmail);
-        ImageView googleAvatar = (ImageView) view.findViewById(R.id.googleAvatar);
-
-
-        button_sn_google = view.findViewById(R.id.button_sn_google);
-        button_sn_facebook = view.findViewById(R.id.button_sn_facebook);
 
         if (user != null) {
             Toast.makeText(MainActivity.this, user.getEmail(),
                     Toast.LENGTH_SHORT).show();
-            /*Glide.with(this)
+            Glide.with(this)
                     .load(user.getPhotoUrl())
-                    .into(googleAvatar);*/
+                    .into(googleAvatar);
 
             googleName.setText(user.getDisplayName());
             googleEmail.setText(user.getEmail());

@@ -1,0 +1,106 @@
+Index: app/google-services.json
+===================================================================
+--- app/google-services.json	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ app/google-services.json	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
+@@ -1,48 +0,0 @@
+-{
+-  "project_info": {
+-    "project_number": "882296129615",
+-    "project_id": "firebase-mulator"
+-  },
+-  "client": [
+-    {
+-      "client_info": {
+-        "mobilesdk_app_id": "1:882296129615:android:8b179f10dd87bc5b",
+-        "android_client_info": {
+-          "package_name": "com.example.fedor.a4mulator"
+-        }
+-      },
+-      "oauth_client": [
+-        {
+-          "client_id": "882296129615-nbk1dighr3k8q0gqlb4ahs4gbd7t96j8.apps.googleusercontent.com",
+-          "client_type": 3
+-        },
+-        {
+-          "client_id": "882296129615-qe60u8ilka2gbkqhttr8jqnijqphj9h5.apps.googleusercontent.com",
+-          "client_type": 1,
+-          "android_info": {
+-            "package_name": "com.example.fedor.a4mulator",
+-            "certificate_hash": "eed4d4ca0c8604e5fbeb81d19559813851a89e86"
+-          }
+-        }
+-      ],
+-      "api_key": [
+-        {
+-          "current_key": "AIzaSyBtmjfUPrqfurBnRpJn_W65EvAzGsY3ncE"
+-        }
+-      ],
+-      "services": {
+-        "analytics_service": {
+-          "status": 1
+-        },
+-        "appinvite_service": {
+-          "status": 1,
+-          "other_platform_oauth_client": []
+-        },
+-        "ads_service": {
+-          "status": 1
+-        }
+-      }
+-    }
+-  ],
+-  "configuration_version": "1"
+-}
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectModuleManager\">\n    <modules>\n      <module fileurl=\"file://$PROJECT_DIR$/1234mulator.iml\" filepath=\"$PROJECT_DIR$/1234mulator.iml\" />\n      <module fileurl=\"file://C:\\Users\\Nazar\\AndroidStudioProjects\\1234mulator\\4mulator.iml\" filepath=\"C:\\Users\\Nazar\\AndroidStudioProjects\\1234mulator\\4mulator.iml\" />\n      <module fileurl=\"file://$PROJECT_DIR$/app/app.iml\" filepath=\"$PROJECT_DIR$/app/app.iml\" />\n    </modules>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 2274f4ccabd11e99f8385f0e63565dbb20efd90f)
++++ .idea/modules.xml	
+@@ -2,8 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/1234mulator.iml" filepath="$PROJECT_DIR$/1234mulator.iml" />
+-      <module fileurl="file://C:\Users\Nazar\AndroidStudioProjects\1234mulator\4mulator.iml" filepath="C:\Users\Nazar\AndroidStudioProjects\1234mulator\4mulator.iml" />
++      <module fileurl="file://$PROJECT_DIR$/4mulator.iml" filepath="$PROJECT_DIR$/4mulator.iml" />
+       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+     </modules>
+   </component>
+Index: .idea/dictionaries/fedor.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/dictionaries/fedor.xml	
++++ .idea/dictionaries/fedor.xml	
+@@ -0,0 +1,8 @@
++<component name="ProjectDictionaryState">
++  <dictionary name="fedor">
++    <words>
++      <w>firebase</w>
++      <w>snackbar</w>
++    </words>
++  </dictionary>
++</component>
+\ No newline at end of file
+Index: app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java	
++++ app/src/main/java/com/example/fedor/a4mulator/view/GoogleAuth.java	
+@@ -0,0 +1,8 @@
++package com.example.fedor.a4mulator.view;
++
++/**
++ * Created by fedor on 04.01.2018.
++ */
++
++public class GoogleAuth {
++}
