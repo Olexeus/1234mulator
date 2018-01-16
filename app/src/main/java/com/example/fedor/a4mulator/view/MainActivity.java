@@ -2,7 +2,10 @@ package com.example.fedor.a4mulator.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,8 +17,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +41,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -239,14 +244,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     // TODO : onActivityResult DUPLICATES problem
-/*    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 //        File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES
 //        TODO :  remake these methods with mvp
         switch(requestCode) {
             case 1:
                 if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-                    Bundle extras = imageReturnedIntent.getExtras();
+                    Bundle extras = data.getExtras();
                     Bitmap imageBitmap = (Bitmap) extras.get("data");
 //                    avatar.setImageBitmap(imageBitmap);
   //                  save to db
@@ -258,7 +263,7 @@ public class MainActivity extends AppCompatActivity
 
                     SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString(imageReturnedIntent.getData().toString(),"avatar");
+                    editor.putString(data.getData().toString(),"avatar");
                     editor.commit();
 //
 //                    SharedPreferences shre = PreferenceManager.getDefaultSharedPreferences(this);
@@ -276,15 +281,29 @@ public class MainActivity extends AppCompatActivity
                 if(resultCode == RESULT_OK){
                     SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("avatar",imageReturnedIntent.getData().toString());
+                    editor.putString("avatar",data.getData().toString());
                     editor.commit();
                     editor.apply();
-                    Uri image = Uri.parse(imageReturnedIntent.getData().toString());
+                    Uri image = Uri.parse(data.getData().toString());
                     avatar.setImageURI(image);
                 }
                 break;
+            case RC_SIGN_IN:
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    firebaseAuthWithGoogle(account);
+                } catch (ApiException e) {
+                    // Google Sign In failed, update UI appropriately
+                    Log.w(TAG, "Google sign in failed", e);
+                    // [START_EXCLUDE]
+                    updateUI(null);
+                    // [END_EXCLUDE]
+                }
+                break;
         }
-    }*/
+    }
 
     protected void deleteAvatar(){
         avatar.setImageDrawable(getResources().getDrawable(R.drawable.ic_profile_picture));
@@ -303,28 +322,6 @@ public class MainActivity extends AppCompatActivity
     }
     // [END on_start_check_user]
 
-    // [START onactivityresult]
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                // [START_EXCLUDE]
-                updateUI(null);
-                // [END_EXCLUDE]
-            }
-        }
-    }
-    // [END onactivityresult]
 
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
