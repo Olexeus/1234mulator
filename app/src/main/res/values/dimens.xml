@@ -12,6 +12,6 @@
     <dimen name="theme_butt_height">70dp</dimen>
     <dimen name="theme_butt_margin">6dp</dimen>
     <dimen name="theme_name">12sp</dimen>
-    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots__height">30dp</dimen>
     <dimen name="dots_margin_bottom">20dp</dimen>
 </resources>
