@@ -33,7 +33,8 @@ public class SliderWidget extends Fragment {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    Context c;
+    Context c;                       //commit
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
