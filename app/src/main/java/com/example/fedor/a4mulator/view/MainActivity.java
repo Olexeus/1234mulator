@@ -48,12 +48,14 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     char button_sn_google1,button_sn_facebook1 = 0;
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    ImageView avatar;
+    CircleImageView avatar;
 
 
     private static final String TAG = "GoogleActivity";
@@ -75,14 +77,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -160,8 +154,8 @@ public class MainActivity extends AppCompatActivity
 
         googleName = findViewById(R.id.googleName);
         googleEmail =  findViewById(R.id.googleEmail);
-        googleAvatar = findViewById(R.id.Avatar);
-        avatar = findViewById(R.id.googleAvatar) ;
+        googleAvatar = findViewById(R.id.avatar);
+        avatar = findViewById(R.id.avatar) ;
         button_sn_google = findViewById(R.id.button_sn_google);
         button_sn_facebook = findViewById(R.id.button_sn_facebook);
 
