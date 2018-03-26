@@ -5,14 +5,18 @@ package com.example.fedor.a4mulator.view;
  */
 
         import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+        import android.support.annotation.Nullable;
+        import android.support.v4.app.Fragment;
+        import android.support.v4.view.ViewPager;
+        import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fedor.a4mulator.R;
 
 public class FormulasFragment extends Fragment {
+
+    PageAdapter adapter;
     public static FormulasFragment newInstance() {
         FormulasFragment fragment = new FormulasFragment();
         return fragment;
@@ -20,7 +24,16 @@ public class FormulasFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ViewPager pager = (ViewPager) getView().findViewById(R.id.view_pager);
+        adapter = new PageAdapter(getContext());
+        pager.setAdapter(adapter);
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
