@@ -4,11 +4,11 @@ package com.example.fedor.a4mulator.view;
  * Created by fedor on 21.10.2017.
  */
 
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.view.ViewPager;
-        import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -30,9 +30,17 @@ public class FormulasFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ViewPager pager = (ViewPager) getView().findViewById(R.id.view_pager);
-        adapter = new PageAdapter(getContext());
-        pager.setAdapter(adapter);
+
+        SliderFragment sliderWidget = new SliderFragment();
+//        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.ineslider,new SliderWidget()).commit();
+
+        FragmentTransaction transaction=getFragmentManager().beginTransaction();
+        transaction.replace(R.id.pust_frag,new SliderFragment());
+        transaction.addToBackStack(null);
+        transaction.commit();
+//        ViewPager pager = (ViewPager) getView().findViewById(R.id.view_pager);
+//        adapter = new PageAdapter(getContext());
+//        pager.setAdapter(adapter);
         super.onViewCreated(view, savedInstanceState);
     }
 

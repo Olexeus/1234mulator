@@ -8,4 +8,11 @@
     <color name="white">#ffffff</color>
     <color name="white_trans">#99FFFFFF</color>
     <color name="colorText">#000000</color>
+    <color name="dot_selected">#c8ff0000</color>
+    <color name="dot_unselected">#f831c1ab</color>
+    <array name="array_dot">
+        <item>@color/dot_selected</item>
+
+        <item>@color/dot_unselected</item>
+    </array>
 </resources>

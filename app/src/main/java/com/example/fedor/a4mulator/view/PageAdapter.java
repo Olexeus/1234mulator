@@ -2,14 +2,10 @@ package com.example.fedor.a4mulator.view;
 
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.fedor.a4mulator.R;
@@ -51,7 +47,7 @@ class PageAdapter extends PagerAdapter {
 //    int[] resources = {R.drawable.image1, R.drawable.image2, R.drawable.image3};
 
     public PageAdapter(Context context) {
-        context = context;
+        this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -80,6 +76,7 @@ class PageAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+        View view = (View) object;
         container.removeView((LinearLayout) object);
     }
 }
